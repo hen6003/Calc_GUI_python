@@ -1,7 +1,7 @@
 #imports
 from tkinter import *
 import tempfile
-import os 
+import os
 import math
 
 #creating root
@@ -10,7 +10,7 @@ root.title("Calc")
 root.maxsize(318, 396)
 root.minsize(318, 396)
 dir_path = os.path.dirname(os.path.realpath(__file__)) #finding directory
-ver = "1.8" #version
+ver = "1.10" #version
 #images
 photo = PhotoImage(file = dir_path + "/Calc.png")
 root.iconphoto(True, photo)
@@ -26,35 +26,35 @@ def button_click(num): #writing numbers to entry box
 def button_clear(): #clearing entry box
     e.delete(0, END)
 
-def button_add(): 
+def button_add():
     first_number = e.get()
-    global math
+    global func
     global f_num
-    math = "add"
+    func = "add"
     f_num = float(first_number)
     e.delete(0, END)
 
-def button_minus(): 
+def button_minus():
     first_number = e.get()
     global f_num
-    global math
-    math = "minus"
+    global func
+    func = "minus"
     f_num = float(first_number)
     e.delete(0, END)
-    
+
 def button_divide():
     first_number = e.get()
     global f_num
-    global math
-    math = "divide"
+    global func
+    func = "divide"
     f_num = float(first_number)
     e.delete(0, END)
 
 def button_times():
     first_number = e.get()
     global f_num
-    global math
-    math = "times"
+    global func
+    func = "times"
     f_num = float(first_number)
     e.delete(0, END)
 
@@ -62,20 +62,20 @@ def button_equal(): #finds the answer
     second_number = e.get()
     e.delete(0, END)
 
-    if math == "add":
+    if func == "add":
         e.insert(0, f_num + float(second_number))
 
-    if math == "minus":
+    if func == "minus":
         e.insert(0, f_num - float(second_number))
 
-    if math == "divide":
+    if func == "divide":
         if float(second_number) == 0:
             e.insert(0, "∞")
 
         else:
             e.insert(0, f_num / float(second_number))
 
-    if math == "times":
+    if func == "times":
         e.insert(0, f_num * float(second_number))
 
 def square(): #squares number
@@ -85,10 +85,9 @@ def square(): #squares number
     e.insert(0, dived)
 
 def rooting(): #square roots number
-    div = float(e.get())
-    dived = math.sqrt(div)
+    div = math.sqrt(float(e.get()))
     e.delete(0, END)
-    e.insert(0, dived)
+    e.insert(0, div)
 
 #creating widgets
 frame = LabelFrame(root, text = "Version: " + str(ver))
