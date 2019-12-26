@@ -11,7 +11,7 @@ root.title("Calc")
 root.maxsize(266, 390)
 root.minsize(266, 390)
 dir_path = os.path.dirname(os.path.realpath(__file__)) #finding directory
-ver = "1.10" #version
+ver = "1.10-win" #version
 #images
 photo = PhotoImage(file = dir_path + "/Calc.png")
 root.iconphoto(True, photo)
